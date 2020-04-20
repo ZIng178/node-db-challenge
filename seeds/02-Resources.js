@@ -5,7 +5,11 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('Resources').insert([
-       {resource_name:"whatever resource"}
+       {project_id: 1, resource_name:"Computer"},
+       {project_id: 2, resource_name:"Conference room"},
+       {project_id: 3, resource_name:"Microphone"},
+       
+
       ]);
     });
 };
