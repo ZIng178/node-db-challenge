@@ -33,8 +33,8 @@ function addTask(task, porject_id){
         return db("Resources");
       }
       
-      function addResource(body) {
-        return db("resource").insert(body);
+      function addResources(body) {
+        return db("Resources").insert(body);
       }
         
         
@@ -46,5 +46,6 @@ module.exports={
     addProject,
     addTask,
     getTasks,
-    getResources
+    getResources,
+    addResources
 }

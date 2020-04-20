@@ -3,7 +3,7 @@ const Projects=require("./project-model")
 
 const router=express.Router()
 
-router.get("/", (req,res)=>{
+router.get("/projects", (req,res)=>{
     Projects.get()
     .then(project=>{
         res.status(200).json(project)
@@ -16,7 +16,7 @@ router.get("/", (req,res)=>{
 
 
 
-router.get("/:id", (req,res)=>{
+router.get("/projects/:id", (req,res)=>{
     const{id}=req.params
     Projects.getById(id)
     .then(project_id=>{
@@ -33,7 +33,7 @@ router.get("/:id", (req,res)=>{
     })
 })
 
-router.post("/", (req,res)=>{
+router.post("/projects", (req,res)=>{
     const projectBody=req.body
     Projects.addProject(projectBody)
     .then(project=>{
@@ -61,6 +61,17 @@ router.get("/resource", (req,res)=>{
     })
     .catch(error=>{
         res.status(500).json({message:"Failed to get resources", error})
+    })
+})
+
+router.post("/resource", (req,res)=>{
+    const resourceBody=req.body
+    Projects.addResources(resourceBody)
+    .then(resource=>{
+        res.status(200).json(resource)
+    })
+    .catch(error=>{
+        res.status(500).json({message: "cannot find resource", error})
     })
 })
 
